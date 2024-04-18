@@ -1,3 +1,5 @@
+console.log("Hello World");
+
 import express from "express";
 import { create } from "express-handlebars"
 import authRouter from "./routers/auth.js";
