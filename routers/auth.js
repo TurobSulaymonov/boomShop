@@ -12,5 +12,16 @@ router.get("/register", (req, res) => {
         title: `Register | Turob`
     })
 });
+router.post("/login", (req, res) => {
+
+   // console.log(req.body)
+    res.redirect("/" )
+});
+
+router.post("/register", (req, res) => {
+    //res.sendFile(path.join(__dirname, "views", "about.html"));
+    console.log(req.body)
+    res.redirect("/" )
+});
 
 export default router;
