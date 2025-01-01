@@ -62,7 +62,6 @@ router.post("/login", async (req, res) => {
     
     const token = generateJWTToken(existUser._id);
     res.cookie("token", token, {httpOnly: true, secure: true})
-    console.log("token:", token)
 	res.redirect('/')
 });
 
@@ -93,7 +92,6 @@ router.post("/register", async (req, res) => {
    const user = await User.create(userData);
    const token = generateJWTToken(user._id);
     res.cookie("token", token, {httpOnly: true, secure: true})
-    console.log("token:", token)
     res.redirect("/" )
 });
 
