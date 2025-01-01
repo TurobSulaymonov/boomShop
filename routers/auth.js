@@ -7,10 +7,10 @@ import  {generateJWTToken}  from '../services/token.service.js';
 
 const router = Router();
 router.get("/login", (req, res) => {
-    //if (req.cookies.token) {
-//		res.redirect('/')
-//		return
-//	}
+    if (req.cookies.token) {
+	res.redirect('/')
+		return
+	}
 	res.render('login', {
 		title: 'Login | Turob',
 		isLogin: true,
@@ -20,17 +20,22 @@ router.get("/login", (req, res) => {
 
 
 router.get('/register', (req, res) => {
-	//if (req.cookies.token) {
-	//	res.redirect('/')
-	//	return
-	//}
+	if (req.cookies.token) {
+		res.redirect('/')
+		return
+    }
 	res.render('register', {
 		title: 'Register | Sammi',
 		isRegister: true,
 		registerError: req.flash('registerError'),
 	})
 })
+  
 
+router.get("/logout", (req,res) => {
+    res.clearCookie('token');
+    res.redirect('/');
+})
 
 router.post("/login", async (req, res) => {
     const {email, password} = req.body
